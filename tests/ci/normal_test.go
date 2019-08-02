@@ -12,13 +12,13 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/lhpmain/frp/client/proxy"
-	"github.com/lhpmain/frp/server/ports"
-	"github.com/lhpmain/frp/tests/consts"
-	"github.com/lhpmain/frp/tests/mock"
-	"github.com/lhpmain/frp/tests/util"
+	"github.com/fatedier/frp/client/proxy"
+	"github.com/fatedier/frp/server/ports"
+	"github.com/fatedier/frp/tests/consts"
+	"github.com/fatedier/frp/tests/mock"
+	"github.com/fatedier/frp/tests/util"
 
-	gnet "github.com/lhpmain/golib/net"
+	gnet "github.com/fatedier/golib/net"
 )
 
 func TestMain(m *testing.M) {

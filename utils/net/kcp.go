@@ -1,4 +1,4 @@
-// Copyright 2017 lhpmain, lhpmain@gmail.com
+// Copyright 2017 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/lhpmain/frp/utils/log"
+	"github.com/fatedier/frp/utils/log"
 
-	kcp "github.com/lhpmain/kcp-go"
+	kcp "github.com/fatedier/kcp-go"
 )
 
 type KcpListener struct {

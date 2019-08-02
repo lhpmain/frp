@@ -1,4 +1,4 @@
-// Copyright 2016 lhpmain, lhpmain@gmail.com
+// Copyright 2016 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import (
 	"strings"
 )
 
-var version string = "0.27.0"
+var version string = "0.28.0"
 
 func Full() string {
 	return version

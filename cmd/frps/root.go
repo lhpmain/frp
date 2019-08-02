@@ -1,4 +1,4 @@
-// Copyright 2018 lhpmain, lhpmain@gmail.com
+// Copyright 2018 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,12 +20,12 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lhpmain/frp/g"
-	"github.com/lhpmain/frp/models/config"
-	"github.com/lhpmain/frp/server"
-	"github.com/lhpmain/frp/utils/log"
-	"github.com/lhpmain/frp/utils/util"
-	"github.com/lhpmain/frp/utils/version"
+	"github.com/fatedier/frp/g"
+	"github.com/fatedier/frp/models/config"
+	"github.com/fatedier/frp/server"
+	"github.com/fatedier/frp/utils/log"
+	"github.com/fatedier/frp/utils/util"
+	"github.com/fatedier/frp/utils/version"
 )
 
 const (
@@ -79,7 +79,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&dashboardPwd, "dashboard_pwd", "", "admin", "dashboard password")
 	rootCmd.PersistentFlags().StringVarP(&logFile, "log_file", "", "console", "log file")
 	rootCmd.PersistentFlags().StringVarP(&logLevel, "log_level", "", "info", "log level")
-	rootCmd.PersistentFlags().Int64VarP(&logMaxDays, "log_max_days", "", 3, "log_max_days")
+	rootCmd.PersistentFlags().Int64VarP(&logMaxDays, "log_max_days", "", 3, "log max days")
 	rootCmd.PersistentFlags().StringVarP(&token, "token", "t", "", "auth token")
 	rootCmd.PersistentFlags().StringVarP(&subDomainHost, "subdomain_host", "", "", "subdomain host")
 	rootCmd.PersistentFlags().StringVarP(&allowPorts, "allow_ports", "", "", "allow ports")
@@ -88,7 +88,7 @@ func init() {
 
 var rootCmd = &cobra.Command{
 	Use:   "frps",
-	Short: "frps is the server of frp (https://github.com/lhpmain/frp)",
+	Short: "frps is the server of frp (https://github.com/fatedier/frp)",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if showVersion {
 			fmt.Println(version.Full())

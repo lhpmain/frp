@@ -3,7 +3,7 @@ package event
 import (
 	"errors"
 
-	"github.com/lhpmain/frp/models/msg"
+	"github.com/fatedier/frp/models/msg"
 )
 
 type EventType int

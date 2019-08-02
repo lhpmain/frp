@@ -1,4 +1,4 @@
-// Copyright 2019 lhpmain, lhpmain@gmail.com
+// Copyright 2019 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
 package controller
 
 import (
-	"github.com/lhpmain/frp/models/nathole"
-	"github.com/lhpmain/frp/server/group"
-	"github.com/lhpmain/frp/server/ports"
-	"github.com/lhpmain/frp/utils/vhost"
+	"github.com/fatedier/frp/models/nathole"
+	"github.com/fatedier/frp/server/group"
+	"github.com/fatedier/frp/server/ports"
+	"github.com/fatedier/frp/utils/vhost"
 )
 
 // All resource managers and controllers
@@ -29,6 +29,9 @@ type ResourceController struct {
 	// Tcp Group Controller
 	TcpGroupCtl *group.TcpGroupCtl
 
+	// HTTP Group Controller
+	HTTPGroupCtl *group.HTTPGroupController
+
 	// Manage all tcp ports
 	TcpPortManager *ports.PortManager
 
@@ -38,7 +41,7 @@ type ResourceController struct {
 	// For http proxies, forwarding http requests
 	HttpReverseProxy *vhost.HttpReverseProxy
 
-	// For https proxies, route requests to different clients by hostname and other infomation
+	// For https proxies, route requests to different clients by hostname and other information
 	VhostHttpsMuxer *vhost.HttpsMuxer
 
 	// Controller for nat hole connections

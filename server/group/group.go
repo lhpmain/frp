@@ -1,4 +1,4 @@
-// Copyright 2018 lhpmain, lhpmain@gmail.com
+// Copyright 2018 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,4 +23,5 @@ var (
 	ErrGroupParamsInvalid = errors.New("group params invalid")
 	ErrListenerClosed     = errors.New("group listener closed")
 	ErrGroupDifferentPort = errors.New("group should have same remote port")
+	ErrProxyRepeated      = errors.New("group proxy repeated")
 )

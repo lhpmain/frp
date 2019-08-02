@@ -1,4 +1,4 @@
-// Copyright 2019 lhpmain, lhpmain@gmail.com
+// Copyright 2019 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@ package proxy
 import (
 	"fmt"
 
-	"github.com/lhpmain/frp/models/config"
-	"github.com/lhpmain/frp/models/msg"
+	"github.com/fatedier/frp/models/config"
+	"github.com/fatedier/frp/models/msg"
 
-	"github.com/lhpmain/golib/errors"
+	"github.com/fatedier/golib/errors"
 )
 
 type XtcpProxy struct {

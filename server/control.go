@@ -1,4 +1,4 @@
-// Copyright 2017 lhpmain, lhpmain@gmail.com
+// Copyright 2017 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,20 +21,20 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lhpmain/frp/g"
-	"github.com/lhpmain/frp/models/config"
-	"github.com/lhpmain/frp/models/consts"
-	frpErr "github.com/lhpmain/frp/models/errors"
-	"github.com/lhpmain/frp/models/msg"
-	"github.com/lhpmain/frp/server/controller"
-	"github.com/lhpmain/frp/server/proxy"
-	"github.com/lhpmain/frp/server/stats"
-	"github.com/lhpmain/frp/utils/net"
-	"github.com/lhpmain/frp/utils/version"
+	"github.com/fatedier/frp/g"
+	"github.com/fatedier/frp/models/config"
+	"github.com/fatedier/frp/models/consts"
+	frpErr "github.com/fatedier/frp/models/errors"
+	"github.com/fatedier/frp/models/msg"
+	"github.com/fatedier/frp/server/controller"
+	"github.com/fatedier/frp/server/proxy"
+	"github.com/fatedier/frp/server/stats"
+	"github.com/fatedier/frp/utils/net"
+	"github.com/fatedier/frp/utils/version"
 
-	"github.com/lhpmain/golib/control/shutdown"
-	"github.com/lhpmain/golib/crypto"
-	"github.com/lhpmain/golib/errors"
+	"github.com/fatedier/golib/control/shutdown"
+	"github.com/fatedier/golib/crypto"
+	"github.com/fatedier/golib/errors"
 )
 
 type ControlManager struct {

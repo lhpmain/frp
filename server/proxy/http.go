@@ -1,4 +1,4 @@
-// Copyright 2019 lhpmain, lhpmain@gmail.com
+// Copyright 2019 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,14 +19,14 @@ import (
 	"net"
 	"strings"
 
-	"github.com/lhpmain/frp/g"
-	"github.com/lhpmain/frp/models/config"
-	"github.com/lhpmain/frp/server/stats"
-	frpNet "github.com/lhpmain/frp/utils/net"
-	"github.com/lhpmain/frp/utils/util"
-	"github.com/lhpmain/frp/utils/vhost"
+	"github.com/fatedier/frp/g"
+	"github.com/fatedier/frp/models/config"
+	"github.com/fatedier/frp/server/stats"
+	frpNet "github.com/fatedier/frp/utils/net"
+	"github.com/fatedier/frp/utils/util"
+	"github.com/fatedier/frp/utils/vhost"
 
-	frpIo "github.com/lhpmain/golib/io"
+	frpIo "github.com/fatedier/golib/io"
 )
 
 type HttpProxy struct {
@@ -50,6 +50,12 @@ func (pxy *HttpProxy) Run() (remoteAddr string, err error) {
 		locations = []string{""}
 	}
 
+	defer func() {
+		if err != nil {
+			pxy.Close()
+		}
+	}()
+
 	addrs := make([]string, 0)
 	for _, domain := range pxy.cfg.CustomDomains {
 		if domain == "" {
@@ -59,17 +65,31 @@ func (pxy *HttpProxy) Run() (remoteAddr string, err error) {
 		routeConfig.Domain = domain
 		for _, location := range locations {
 			routeConfig.Location = location
-			err = pxy.rc.HttpReverseProxy.Register(routeConfig)
-			if err != nil {
-				return
-			}
 			tmpDomain := routeConfig.Domain
 			tmpLocation := routeConfig.Location
-			addrs = append(addrs, util.CanonicalAddr(tmpDomain, int(g.GlbServerCfg.VhostHttpPort)))
-			pxy.closeFuncs = append(pxy.closeFuncs, func() {
-				pxy.rc.HttpReverseProxy.UnRegister(tmpDomain, tmpLocation)
-			})
-			pxy.Info("http proxy listen for host [%s] location [%s]", routeConfig.Domain, routeConfig.Location)
+
+			// handle group
+			if pxy.cfg.Group != "" {
+				err = pxy.rc.HTTPGroupCtl.Register(pxy.name, pxy.cfg.Group, pxy.cfg.GroupKey, routeConfig)
+				if err != nil {
+					return
+				}
+
+				pxy.closeFuncs = append(pxy.closeFuncs, func() {
+					pxy.rc.HTTPGroupCtl.UnRegister(pxy.name, pxy.cfg.Group, tmpDomain, tmpLocation)
+				})
+			} else {
+				// no group
+				err = pxy.rc.HttpReverseProxy.Register(routeConfig)
+				if err != nil {
+					return
+				}
+				pxy.closeFuncs = append(pxy.closeFuncs, func() {
+					pxy.rc.HttpReverseProxy.UnRegister(tmpDomain, tmpLocation)
+				})
+			}
+			addrs = append(addrs, util.CanonicalAddr(routeConfig.Domain, int(g.GlbServerCfg.VhostHttpPort)))
+			pxy.Info("http proxy listen for host [%s] location [%s] group [%s]", routeConfig.Domain, routeConfig.Location, pxy.cfg.Group)
 		}
 	}
 
@@ -77,17 +97,31 @@ func (pxy *HttpProxy) Run() (remoteAddr string, err error) {
 		routeConfig.Domain = pxy.cfg.SubDomain + "." + g.GlbServerCfg.SubDomainHost
 		for _, location := range locations {
 			routeConfig.Location = location
-			err = pxy.rc.HttpReverseProxy.Register(routeConfig)
-			if err != nil {
-				return
-			}
 			tmpDomain := routeConfig.Domain
 			tmpLocation := routeConfig.Location
+
+			// handle group
+			if pxy.cfg.Group != "" {
+				err = pxy.rc.HTTPGroupCtl.Register(pxy.name, pxy.cfg.Group, pxy.cfg.GroupKey, routeConfig)
+				if err != nil {
+					return
+				}
+
+				pxy.closeFuncs = append(pxy.closeFuncs, func() {
+					pxy.rc.HTTPGroupCtl.UnRegister(pxy.name, pxy.cfg.Group, tmpDomain, tmpLocation)
+				})
+			} else {
+				err = pxy.rc.HttpReverseProxy.Register(routeConfig)
+				if err != nil {
+					return
+				}
+				pxy.closeFuncs = append(pxy.closeFuncs, func() {
+					pxy.rc.HttpReverseProxy.UnRegister(tmpDomain, tmpLocation)
+				})
+			}
 			addrs = append(addrs, util.CanonicalAddr(tmpDomain, g.GlbServerCfg.VhostHttpPort))
-			pxy.closeFuncs = append(pxy.closeFuncs, func() {
-				pxy.rc.HttpReverseProxy.UnRegister(tmpDomain, tmpLocation)
-			})
-			pxy.Info("http proxy listen for host [%s] location [%s]", routeConfig.Domain, routeConfig.Location)
+
+			pxy.Info("http proxy listen for host [%s] location [%s] group [%s]", routeConfig.Domain, routeConfig.Location, pxy.cfg.Group)
 		}
 	}
 	remoteAddr = strings.Join(addrs, ",")

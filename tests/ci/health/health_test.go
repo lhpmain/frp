@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lhpmain/frp/tests/config"
-	"github.com/lhpmain/frp/tests/consts"
-	"github.com/lhpmain/frp/tests/mock"
-	"github.com/lhpmain/frp/tests/util"
+	"github.com/fatedier/frp/tests/config"
+	"github.com/fatedier/frp/tests/consts"
+	"github.com/fatedier/frp/tests/mock"
+	"github.com/fatedier/frp/tests/util"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -72,7 +72,7 @@ health_check_url = /health
 func TestHealthCheck(t *testing.T) {
 	assert := assert.New(t)
 
-	// ****** start backgroud services ******
+	// ****** start background services ******
 	echoSvc1 := mock.NewEchoServer(15001, 1, "echo1")
 	err := echoSvc1.Start()
 	if assert.NoError(err) {

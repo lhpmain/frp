@@ -1,4 +1,4 @@
-// Copyright 2017 lhpmain, lhpmain@gmail.com
+// Copyright 2017 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,22 +28,22 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/lhpmain/frp/assets"
-	"github.com/lhpmain/frp/g"
-	"github.com/lhpmain/frp/models/msg"
-	"github.com/lhpmain/frp/models/nathole"
-	"github.com/lhpmain/frp/server/controller"
-	"github.com/lhpmain/frp/server/group"
-	"github.com/lhpmain/frp/server/ports"
-	"github.com/lhpmain/frp/server/proxy"
-	"github.com/lhpmain/frp/server/stats"
-	"github.com/lhpmain/frp/utils/log"
-	frpNet "github.com/lhpmain/frp/utils/net"
-	"github.com/lhpmain/frp/utils/util"
-	"github.com/lhpmain/frp/utils/version"
-	"github.com/lhpmain/frp/utils/vhost"
+	"github.com/fatedier/frp/assets"
+	"github.com/fatedier/frp/g"
+	"github.com/fatedier/frp/models/msg"
+	"github.com/fatedier/frp/models/nathole"
+	"github.com/fatedier/frp/server/controller"
+	"github.com/fatedier/frp/server/group"
+	"github.com/fatedier/frp/server/ports"
+	"github.com/fatedier/frp/server/proxy"
+	"github.com/fatedier/frp/server/stats"
+	"github.com/fatedier/frp/utils/log"
+	frpNet "github.com/fatedier/frp/utils/net"
+	"github.com/fatedier/frp/utils/util"
+	"github.com/fatedier/frp/utils/version"
+	"github.com/fatedier/frp/utils/vhost"
 
-	"github.com/lhpmain/golib/net/mux"
+	"github.com/fatedier/golib/net/mux"
 	fmux "github.com/hashicorp/yamux"
 )
 
@@ -76,6 +76,9 @@ type Service struct {
 	// Manage all proxies
 	pxyManager *proxy.ProxyManager
 
+	// HTTP vhost router
+	httpVhostRouter *vhost.VhostRouters
+
 	// All resource managers and controllers
 	rc *controller.ResourceController
 
@@ -95,11 +98,15 @@ func NewService() (svr *Service, err error) {
 			TcpPortManager: ports.NewPortManager("tcp", cfg.ProxyBindAddr, cfg.AllowPorts),
 			UdpPortManager: ports.NewPortManager("udp", cfg.ProxyBindAddr, cfg.AllowPorts),
 		},
-		tlsConfig: generateTLSConfig(),
+		httpVhostRouter: vhost.NewVhostRouters(),
+		tlsConfig:       generateTLSConfig(),
 	}
 
 	// Init group controller
 	svr.rc.TcpGroupCtl = group.NewTcpGroupCtl(svr.rc.TcpPortManager)
+
+	// Init HTTP group controller
+	svr.rc.HTTPGroupCtl = group.NewHTTPGroupController(svr.httpVhostRouter)
 
 	// Init assets
 	err = assets.Load(cfg.AssetsDir)
@@ -159,7 +166,7 @@ func NewService() (svr *Service, err error) {
 	if cfg.VhostHttpPort > 0 {
 		rp := vhost.NewHttpReverseProxy(vhost.HttpReverseProxyOptions{
 			ResponseHeaderTimeoutS: cfg.VhostHttpTimeout,
-		})
+		}, svr.httpVhostRouter)
 		svr.rc.HttpReverseProxy = rp
 
 		address := fmt.Sprintf("%s:%d", cfg.ProxyBindAddr, cfg.VhostHttpPort)
@@ -259,7 +266,16 @@ func (svr *Service) HandleListener(l frpNet.Listener) {
 			log.Warn("Listener for incoming connections from client closed")
 			return
 		}
-		c = frpNet.CheckAndEnableTLSServerConn(c, svr.tlsConfig)
+
+		log.Trace("start check TLS connection...")
+		originConn := c
+		c, err = frpNet.CheckAndEnableTLSServerConnWithTimeout(c, svr.tlsConfig, connReadTimeout)
+		if err != nil {
+			log.Warn("CheckAndEnableTLSServerConnWithTimeout error: %v", err)
+			originConn.Close()
+			continue
+		}
+		log.Trace("success check TLS connection")
 
 		// Start a new goroutine for dealing connections.
 		go func(frpConn frpNet.Conn) {

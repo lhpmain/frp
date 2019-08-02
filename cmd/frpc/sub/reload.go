@@ -1,4 +1,4 @@
-// Copyright 2018 lhpmain, lhpmain@gmail.com
+// Copyright 2018 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lhpmain/frp/g"
-	"github.com/lhpmain/frp/models/config"
+	"github.com/fatedier/frp/g"
+	"github.com/fatedier/frp/models/config"
 )
 
 func init() {
@@ -76,17 +76,16 @@ func reload() error {
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
-	} else {
-		if resp.StatusCode == 200 {
-			return nil
-		}
-
-		defer resp.Body.Close()
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			return err
-		}
-		return fmt.Errorf("code [%d], %s", resp.StatusCode, strings.TrimSpace(string(body)))
 	}
-	return nil
+	defer resp.Body.Close()
+
+	if resp.StatusCode == 200 {
+		return nil
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+	return fmt.Errorf("code [%d], %s", resp.StatusCode, strings.TrimSpace(string(body)))
 }

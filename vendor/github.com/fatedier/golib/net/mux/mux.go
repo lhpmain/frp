@@ -1,4 +1,4 @@
-// Copyright 2018 lhpmain, lhpmain@gmail.com
+// Copyright 2018 fatedier, fatedier@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lhpmain/golib/errors"
-	gnet "github.com/lhpmain/golib/net"
+	"github.com/fatedier/golib/errors"
+	gnet "github.com/fatedier/golib/net"
 )
 
 const (

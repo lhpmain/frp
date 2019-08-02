@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/lhpmain/frp/client/event"
-	"github.com/lhpmain/frp/models/config"
-	"github.com/lhpmain/frp/models/msg"
-	"github.com/lhpmain/frp/utils/log"
-	frpNet "github.com/lhpmain/frp/utils/net"
+	"github.com/fatedier/frp/client/event"
+	"github.com/fatedier/frp/models/config"
+	"github.com/fatedier/frp/models/msg"
+	"github.com/fatedier/frp/utils/log"
+	frpNet "github.com/fatedier/frp/utils/net"
 
-	"github.com/lhpmain/golib/errors"
+	"github.com/fatedier/golib/errors"
 )
 
 type ProxyManager struct {

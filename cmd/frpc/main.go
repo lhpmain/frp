@@ -15,10 +15,10 @@
 package main
 
 import (
-	_ "github.com/fatedier/frp/assets/frpc/statik"
-	"github.com/fatedier/frp/cmd/frpc/sub"
+	_ "github.com/lhpmain/frp/assets/frpc/statik"
+	"github.com/lhpmain/frp/cmd/frpc/sub"
 
-	"github.com/fatedier/golib/crypto"
+	"github.com/lhpmain/golib/crypto"
 )
 
 func main() {

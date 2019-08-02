@@ -1,7 +1,7 @@
 package g
 
 import (
-	"github.com/fatedier/frp/models/config"
+	"github.com/lhpmain/frp/models/config"
 )
 
 var (

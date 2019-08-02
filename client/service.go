@@ -1,4 +1,4 @@
-// Copyright 2017 fatedier, fatedier@gmail.com
+// Copyright 2017 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,14 +23,14 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/fatedier/frp/assets"
-	"github.com/fatedier/frp/g"
-	"github.com/fatedier/frp/models/config"
-	"github.com/fatedier/frp/models/msg"
-	"github.com/fatedier/frp/utils/log"
-	frpNet "github.com/fatedier/frp/utils/net"
-	"github.com/fatedier/frp/utils/util"
-	"github.com/fatedier/frp/utils/version"
+	"github.com/lhpmain/frp/assets"
+	"github.com/lhpmain/frp/g"
+	"github.com/lhpmain/frp/models/config"
+	"github.com/lhpmain/frp/models/msg"
+	"github.com/lhpmain/frp/utils/log"
+	frpNet "github.com/lhpmain/frp/utils/net"
+	"github.com/lhpmain/frp/utils/util"
+	"github.com/lhpmain/frp/utils/version"
 
 	fmux "github.com/hashicorp/yamux"
 )

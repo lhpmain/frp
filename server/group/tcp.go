@@ -1,4 +1,4 @@
-// Copyright 2018 fatedier, fatedier@gmail.com
+// Copyright 2018 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ import (
 	"net"
 	"sync"
 
-	"github.com/fatedier/frp/server/ports"
+	"github.com/lhpmain/frp/server/ports"
 
-	gerr "github.com/fatedier/golib/errors"
+	gerr "github.com/lhpmain/golib/errors"
 )
 
 type TcpGroupListener struct {

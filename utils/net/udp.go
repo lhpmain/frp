@@ -1,4 +1,4 @@
-// Copyright 2017 fatedier, fatedier@gmail.com
+// Copyright 2017 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fatedier/frp/utils/log"
+	"github.com/lhpmain/frp/utils/log"
 
-	"github.com/fatedier/golib/pool"
+	"github.com/lhpmain/golib/pool"
 )
 
 type UdpPacket struct {

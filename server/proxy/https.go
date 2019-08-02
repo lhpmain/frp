@@ -1,4 +1,4 @@
-// Copyright 2019 fatedier, fatedier@gmail.com
+// Copyright 2019 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@ package proxy
 import (
 	"strings"
 
-	"github.com/fatedier/frp/g"
-	"github.com/fatedier/frp/models/config"
-	"github.com/fatedier/frp/utils/util"
-	"github.com/fatedier/frp/utils/vhost"
+	"github.com/lhpmain/frp/g"
+	"github.com/lhpmain/frp/models/config"
+	"github.com/lhpmain/frp/utils/util"
+	"github.com/lhpmain/frp/utils/vhost"
 )
 
 type HttpsProxy struct {

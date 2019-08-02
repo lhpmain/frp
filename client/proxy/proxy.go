@@ -1,4 +1,4 @@
-// Copyright 2017 fatedier, fatedier@gmail.com
+// Copyright 2017 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,17 +25,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fatedier/frp/g"
-	"github.com/fatedier/frp/models/config"
-	"github.com/fatedier/frp/models/msg"
-	"github.com/fatedier/frp/models/plugin"
-	"github.com/fatedier/frp/models/proto/udp"
-	"github.com/fatedier/frp/utils/log"
-	frpNet "github.com/fatedier/frp/utils/net"
+	"github.com/lhpmain/frp/g"
+	"github.com/lhpmain/frp/models/config"
+	"github.com/lhpmain/frp/models/msg"
+	"github.com/lhpmain/frp/models/plugin"
+	"github.com/lhpmain/frp/models/proto/udp"
+	"github.com/lhpmain/frp/utils/log"
+	frpNet "github.com/lhpmain/frp/utils/net"
 
-	"github.com/fatedier/golib/errors"
-	frpIo "github.com/fatedier/golib/io"
-	"github.com/fatedier/golib/pool"
+	"github.com/lhpmain/golib/errors"
+	frpIo "github.com/lhpmain/golib/io"
+	"github.com/lhpmain/golib/pool"
 	fmux "github.com/hashicorp/yamux"
 	pp "github.com/pires/go-proxyproto"
 )

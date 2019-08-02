@@ -1,4 +1,4 @@
-// Copyright 2018 fatedier, fatedier@gmail.com
+// Copyright 2018 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
 package main
 
 import (
-	"github.com/fatedier/golib/crypto"
+	"github.com/lhpmain/golib/crypto"
 
-	_ "github.com/fatedier/frp/assets/frps/statik"
+	_ "github.com/lhpmain/frp/assets/frps/statik"
 )
 
 func main() {

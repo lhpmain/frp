@@ -1,4 +1,4 @@
-// Copyright 2017 fatedier, fatedier@gmail.com
+// Copyright 2017 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/fatedier/frp/assets"
-	"github.com/fatedier/frp/g"
-	frpNet "github.com/fatedier/frp/utils/net"
+	"github.com/lhpmain/frp/assets"
+	"github.com/lhpmain/frp/g"
+	frpNet "github.com/lhpmain/frp/utils/net"
 
 	"github.com/gorilla/mux"
 )

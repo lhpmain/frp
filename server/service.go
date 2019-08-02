@@ -1,4 +1,4 @@
-// Copyright 2017 fatedier, fatedier@gmail.com
+// Copyright 2017 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,22 +28,22 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/fatedier/frp/assets"
-	"github.com/fatedier/frp/g"
-	"github.com/fatedier/frp/models/msg"
-	"github.com/fatedier/frp/models/nathole"
-	"github.com/fatedier/frp/server/controller"
-	"github.com/fatedier/frp/server/group"
-	"github.com/fatedier/frp/server/ports"
-	"github.com/fatedier/frp/server/proxy"
-	"github.com/fatedier/frp/server/stats"
-	"github.com/fatedier/frp/utils/log"
-	frpNet "github.com/fatedier/frp/utils/net"
-	"github.com/fatedier/frp/utils/util"
-	"github.com/fatedier/frp/utils/version"
-	"github.com/fatedier/frp/utils/vhost"
+	"github.com/lhpmain/frp/assets"
+	"github.com/lhpmain/frp/g"
+	"github.com/lhpmain/frp/models/msg"
+	"github.com/lhpmain/frp/models/nathole"
+	"github.com/lhpmain/frp/server/controller"
+	"github.com/lhpmain/frp/server/group"
+	"github.com/lhpmain/frp/server/ports"
+	"github.com/lhpmain/frp/server/proxy"
+	"github.com/lhpmain/frp/server/stats"
+	"github.com/lhpmain/frp/utils/log"
+	frpNet "github.com/lhpmain/frp/utils/net"
+	"github.com/lhpmain/frp/utils/util"
+	"github.com/lhpmain/frp/utils/version"
+	"github.com/lhpmain/frp/utils/vhost"
 
-	"github.com/fatedier/golib/net/mux"
+	"github.com/lhpmain/golib/net/mux"
 	fmux "github.com/hashicorp/yamux"
 )
 

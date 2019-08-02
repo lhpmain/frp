@@ -1,4 +1,4 @@
-// Copyright 2017 fatedier, fatedier@gmail.com
+// Copyright 2017 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ import (
 	"io"
 	"sync"
 
-	"github.com/fatedier/golib/crypto"
-	"github.com/fatedier/golib/pool"
+	"github.com/lhpmain/golib/crypto"
+	"github.com/lhpmain/golib/pool"
 )
 
 // Join two io.ReadWriteCloser and do some operations.

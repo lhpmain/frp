@@ -1,4 +1,4 @@
-// Copyright 2019 fatedier, fatedier@gmail.com
+// Copyright 2019 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@ import (
 	"net"
 	"time"
 
-	"github.com/fatedier/frp/g"
-	"github.com/fatedier/frp/models/config"
-	"github.com/fatedier/frp/models/msg"
-	"github.com/fatedier/frp/models/proto/udp"
-	"github.com/fatedier/frp/server/stats"
+	"github.com/lhpmain/frp/g"
+	"github.com/lhpmain/frp/models/config"
+	"github.com/lhpmain/frp/models/msg"
+	"github.com/lhpmain/frp/models/proto/udp"
+	"github.com/lhpmain/frp/server/stats"
 
-	"github.com/fatedier/golib/errors"
+	"github.com/lhpmain/golib/errors"
 )
 
 type UdpProxy struct {

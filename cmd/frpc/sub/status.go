@@ -1,4 +1,4 @@
-// Copyright 2018 fatedier, fatedier@gmail.com
+// Copyright 2018 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ import (
 	"github.com/rodaine/table"
 	"github.com/spf13/cobra"
 
-	"github.com/fatedier/frp/client"
-	"github.com/fatedier/frp/g"
-	"github.com/fatedier/frp/models/config"
+	"github.com/lhpmain/frp/client"
+	"github.com/lhpmain/frp/g"
+	"github.com/lhpmain/frp/models/config"
 )
 
 func init() {

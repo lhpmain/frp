@@ -1,4 +1,4 @@
-// Copyright 2019 fatedier, fatedier@gmail.com
+// Copyright 2019 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import (
 	"crypto/tls"
 	"net"
 
-	gnet "github.com/fatedier/golib/net"
+	gnet "github.com/lhpmain/golib/net"
 )
 
 var (

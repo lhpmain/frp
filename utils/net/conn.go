@@ -1,4 +1,4 @@
-// Copyright 2016 fatedier, fatedier@gmail.com
+// Copyright 2016 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/fatedier/frp/utils/log"
+	"github.com/lhpmain/frp/utils/log"
 
-	gnet "github.com/fatedier/golib/net"
-	kcp "github.com/fatedier/kcp-go"
+	gnet "github.com/lhpmain/golib/net"
+	kcp "github.com/lhpmain/kcp-go"
 )
 
 // Conn is the interface of connections used in frp.

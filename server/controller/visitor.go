@@ -1,4 +1,4 @@
-// Copyright 2019 fatedier, fatedier@gmail.com
+// Copyright 2019 lhpmain, lhpmain@gmail.com
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ import (
 	"io"
 	"sync"
 
-	frpNet "github.com/fatedier/frp/utils/net"
-	"github.com/fatedier/frp/utils/util"
+	frpNet "github.com/lhpmain/frp/utils/net"
+	"github.com/lhpmain/frp/utils/util"
 
-	frpIo "github.com/fatedier/golib/io"
+	frpIo "github.com/lhpmain/golib/io"
 )
 
 // Manager for visitor listeners.
